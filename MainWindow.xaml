@@ -1,0 +1,42 @@
+﻿<Window x:Class="SimplexMethod.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Решатель симплекс-метода" Height="450" Width="600">
+    <Grid>
+        <TabControl>
+            <!-- Вкладка для задания целевой функции -->
+            <TabItem Header="Целевая функция">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Целевая функция (например: 2,3,4):" Margin="0,0,0,10"/>
+                    <TextBox x:Name="ObjectiveFunctionTextBox" Width="300" Margin="0,0,0,10" />
+                    <CheckBox x:Name="MaximizeCheckBox" Content="Максимизация" Margin="0,0,0,10"/>
+                    <Button Content="Задать целевую функцию" Width="200" Click="OnSetObjectiveFunctionClick" />
+                </StackPanel>
+            </TabItem>
+
+            <!-- Вкладка для добавления ограничений -->
+            <TabItem Header="Ограничения">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Введите количество ограничений:" Margin="0,0,0,10"/>
+                    <TextBox x:Name="ConstraintsCountTextBox" Width="50" Margin="0,0,0,10" VerticalAlignment="Center"/>
+                    <Button Content="Задать ограничения" Width="200" Click="OnSetConstraintsClick" Margin="0,10,0,10"/>
+
+                    <!-- Здесь будут отображаться ограничения -->
+                    <StackPanel x:Name="ConstraintsStackPanel" Margin="0,10,0,10"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Вкладка для решения задачи -->
+            <TabItem Header="Решение задачи">
+                <StackPanel Margin="10">
+                    <Button Content="Решить задачу" Width="200" Click="OnSolveClick" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="VariablesTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,350,0,0" Width="760" Height="50" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="SolutionTextBlock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,400,0,0" Width="760" Height="50" TextWrapping="Wrap"/>
+
+                    <DataGrid x:Name="SolutionDataGrid" AutoGenerateColumns="True" Height="200"/>
+                    <Button Content="Экспортировать решение в файл" Width="200" Click="OnExportClick" Margin="0,10,0,0"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
