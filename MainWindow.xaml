@@ -18,8 +18,12 @@
 
             <TextBlock Text="Правые части ограничений (через пробел):" />
             <TextBox Name="RhsBox" Margin="0,5" />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="Решить" Click="Solve_Click" Margin="0,10" Width="100" />
+                <Button Content="Очистить" Click="Clear_Click" Width="100" Margin="10"/>
+                <Button Content="Сохранить результат в файл" Click="SaveToFile_Click" Margin="10" Width="200"/>
+            </StackPanel>
 
-            <Button Content="Решить" Click="Solve_Click" Margin="0,10" Width="100" />
 
             <TextBlock Text="Результат:" FontWeight="Bold" Margin="0,10"/>
             <TextBlock Name="ResultBlock" TextWrapping="Wrap" />

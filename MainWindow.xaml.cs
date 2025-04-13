@@ -143,5 +143,35 @@ namespace SimplexMethod
             sb.AppendLine($"Максимальное значение целевой функции: {Math.Round(tableau[numConstraints, numVariables + numConstraints], 4)}");
             return sb.ToString();
         }
+        private void SaveToFile_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt";
+            saveFileDialog.FileName = "результат_симплекс_метод.txt";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    File.WriteAllText(saveFileDialog.FileName, ResultBlock.Text);
+                    MessageBox.Show("Результат успешно сохранён.", "Сохранение", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при сохранении: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            // Очистка результатов
+            ResultBlock.Text = "";
+            VariablesBox.Text = "";
+            ConstraintsBox.Text = "";
+            ObjectiveBox.Text = "";
+            ConstraintsInput.Text = "";
+            RhsBox.Text = "";
+        }
     }
 }
